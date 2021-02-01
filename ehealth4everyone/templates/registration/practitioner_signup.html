@@ -1,0 +1,93 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Register | eHealth
+{% endblock %} {% block content %}
+<div class="main">
+  <div class="">
+    <div class="signup-content">
+      <div class="signup-img">
+        <img src="{% static 'img/signup-img.jpg' %}" alt="" />
+      </div>
+      <div class="signup-form h-100">
+        <form method="POST" class="register-form" id="register-form">
+          {% csrf_token %}
+          <h2>Medical Practioner Registration Form</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first_name">First Name :</label>
+              <input type="text" name="first_name" id="first_name" required />
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name :</label>
+              <input type="text" name="last_name" id="last_name" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email :</label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+             
+              required
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="passwd1">Password :</label>
+              <input type="password" name="password" pattern=".{6,}" title="password must be atleast six characters long" id="passwd1" required />
+            </div>
+            <div class="form-group">
+              <label for="passwd">Retype Password :</label>
+              <input type="password" name="passwd2" pattern=".{6,}" title="password must be atleast six characters long" id="passwd" required />
+            </div>
+          </div>
+
+          <div class="form-submit">
+            <input
+              type="button"
+              value="Reset All"
+              class="submit"
+              name="resettt"
+              id="resettt"
+            />
+            <input
+              type="submit"
+              value="Register"
+              class="submit"
+              name="submit"
+              id="submit"
+            />
+          </div>
+          <br /><br />
+        
+           <div class="openbtw">
+          <p class="text-left"><a href="{% url 'ehealth:index' %}">Home</a></p>
+          <p class="text-right"><a href="{% url 'ehealth:login' %}">Login Here</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<br /><br />
+<script>
+document.getElementById('passwd2').addEventListener('focus', function(){
+  document.getElementById('passwd1').style.border = '1px solid #ff6801'
+  document.getElementById('passwd2').style.border = '1px solid #05F'
+})
+
+function passwdCheck(e){
+  passwd1 = document.getElementById('passwd1').value
+  if(e.target.value == passwd1){
+    document.getElementById('passwd2').style.border = '1px solid #ff6801'
+  }else{
+    document.getElementById('passwd2').style.border = '1px solid #05F'
+  }
+}
+
+
+document.getElementById('resettt').addEventListener('click', function(){
+  document.getElementById('register-form').reset();
+
+ })
+</script>
+{% endblock %}

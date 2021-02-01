@@ -1,0 +1,159 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block title %} 
+Dashboard | MediChart
+{% endblock %} 
+{% block content %}
+
+<main class="container mt-4">
+    <div class="openbtw">
+        <div class="flex-start" id="filter-cont">
+            <input type="text" name="filter" placeholder="Filter records using first five columns" class="filter" id="filter" onkeyup="taskFilter()">
+        </div>
+         <div class="form-select w-40">
+                <select name="filter_ailment" onchange="ailmentFilter()" id="filter_ailment">
+                  <option class="text-muted" value="all">All Ailment</option>
+                  {% if ailments %}
+                  {% for ailment in ailments %}
+                  <option value="{{ ailment.disease }}">{{ ailment.disease |title }}</option>
+                  {% endfor %}
+                  {% endif %}
+                </select>
+                <span class="select-icon"
+                  ><i class="fas fa-sort-down"></i>
+                </span>
+        </div>
+    </div>
+    <br>
+    <table id="data" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+        <thead id="thead">
+            <tr>
+                <th class="th-sm">Full Name
+
+                </th>
+                <th class="th-sm">Age
+
+                </th>
+                <th class="th-sm">Gender
+
+                </th>
+                <th class="th-sm">Blood Group
+
+                </th>
+                 <th class="th-sm">Genotype
+
+                </th>
+               
+                <th class="th-sm">Ailment
+
+                </th>
+                <th class="th-sm">Last Visit
+
+                </th>
+                 <th class="th-sm">Height (m)
+
+                </th>
+                
+               
+                <th class="th-sm">Weight (kg)
+
+                </th>
+                <th class="th-sm">Address
+
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            {% if profiles %}
+           {% for profile in profiles %}
+            <tr class="profile-row">
+                <td>{{profile.user.first_name |title}} {{profile.user.last_name |title}}</td>
+                <td>{{profile.age}}</td>
+                <td>{{profile.sex |title}}</td>
+                 <td>{{profile.blood_group |upper}}</td>
+                <td>{{profile.genotype |upper}}</td>
+                <td>{{profile.disease |title}}</td>
+                <td>{{profile.last_visit}}</td>
+                <td>{{profile.height}}</td>
+                <td>{{profile.weight}}</td>
+                <td>{{profile.address}}, {{profile.state}}, {{profile.nationality}}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+
+        </tbody>
+    </table>
+</main>
+
+<script>
+ $('#data').after('<div id="nav"></div>');
+    var rowsShown = 15;
+    var rowsTotal = $('#data tbody tr').length;
+    var numPages = rowsTotal / rowsShown;
+    for (i = 0; i < numPages; i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+    }
+    $('#data tbody tr').hide();
+    $('#data tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function () {
+
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#data tbody tr').css('opacity', '1.0').hide().slice(startItem, endItem).
+            css('display', 'table-row').animate({ opacity: 1 }, 300);
+    });
+
+    
+    function taskFilter() {
+        const filter = document.getElementById("filter").value.toLowerCase();
+        const profiles = document.querySelectorAll(".profile-row");
+        profiles.forEach(function (profile) {
+            let name = profile.children[0].textContent.toLowerCase();
+            let age = profile.children[1].textContent.toLowerCase();
+            let sex = profile.children[2].textContent.toLowerCase();
+            let bg = profile.children[3].textContent.toLowerCase();
+            let gt = profile.children[4].textContent.toLowerCase();
+            if (name.indexOf(filter) != -1 || age.indexOf(filter) != -1 || sex.indexOf(filter) != -1 || bg.indexOf(filter) != -1 || gt.indexOf(filter) != -1) {
+                profile.style.display = "table-row";
+            } else {
+                profile.style.display = "none";
+            }
+
+        })
+
+    }
+     function ailmentFilter() {
+        const filter = document.getElementById("filter_ailment").value.toLowerCase();
+        const profiles = document.querySelectorAll(".profile-row");
+        if(filter == 'all'){
+            return location.reload()
+        }
+        profiles.forEach(function (profile) {
+            let ailment = profile.children[5].textContent.toLowerCase();
+            if (ailment.indexOf(filter) != -1) {
+                profile.style.display = "table-row";
+            } else {
+                profile.style.display = "none";
+            }
+
+        })
+
+    }
+
+
+</script>
+
+<style>
+footer{
+    bottom: 0;
+}
+</style>
+
+
+
+{% endblock %}

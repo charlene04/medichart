@@ -1,0 +1,84 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block title %} 
+Stats | MediChart
+{% endblock %} 
+{% block content %}
+
+<main class="container mt-4">
+<div class="row">
+<div class="col-md-9">
+
+<div class="chart-wrap vertical">
+  <h2 class="title">Medical Statistics of Registered Users on MediChart</h2>
+  
+  <div class="grid ml-5">
+   {% if dups %}
+   {% for dup in dups %}
+      <div class="bar" style="width:{% widthratio dup.id__count 1 ratiopx %}px" data-name="{{dup.disease |title}} {% widthratio dup.id__count 1 ratio %}%"></div> 
+    {% endfor %}  
+     {% endif %}
+  </div>
+ 
+</div>
+</div>
+<div class="col-md-3">
+    <table id="data" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+         <thead id="thead">
+            <tr>
+                <th class="th-sm">Population
+
+                </th>
+                <th class="th-sm">Ailment
+
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            {% if dups %}
+           {% for dup in dups %}
+            <tr class="profile-row">
+                <td>{{dup.id__count}}</td>
+                <td>{{dup.disease |title}}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+
+        </tbody>
+    </table>
+     <br><br>
+  <h2 class="mt-4">Population: {{count}}</h2>
+</div>
+</main>
+
+<script>
+ $('#data').after('<div id="nav"></div>');
+    var rowsShown = 9;
+    var rowsTotal = $('#data tbody tr').length;
+    var numPages = rowsTotal / rowsShown;
+    for (i = 0; i < numPages; i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+    }
+    $('#data tbody tr').hide();
+    $('#data tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function () {
+
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#data tbody tr').css('opacity', '1.0').hide().slice(startItem, endItem).
+            css('display', 'table-row').animate({ opacity: 1 }, 300);
+    });
+
+
+
+
+
+</script>
+
+
+{% endblock %}

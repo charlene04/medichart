@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Login | MediChart
+{% endblock %} {% block content %}
+<div class="main">
+  <div class="">
+    <div class="signup-content">
+      <div class="signup-img">
+        <img src="{% static 'img/signup-img.jpg' %}" alt="" />
+      </div>
+      <div class="signup-form">
+        <form method="POST" class="register-form" id="register-form">
+        {% csrf_token %}
+          <h2>User Login Form</h2>
+          <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="text" name="email" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password :</label>
+            <input type="password" name="password" id="password" required />
+          </div>
+
+          <div class="form-submit">
+            <input
+              type="button"
+              value="Reset All"
+              class="submit"
+              name="resettt"
+              id="resettt"
+            />
+            <input
+              type="submit"
+              value="Login"
+              class="submit"
+              name="submit"
+              id="submit"
+            />
+          </div>
+          <br /><br />
+          
+        <div class="openbtw">
+          <p class="text-left"><a href="{% url 'ehealth:index' %}">Home</a></p>
+          <p class="text-right"><a href="{% url 'ehealth:signup' %}">Signup Here</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<br /><br />
+<script>
+    document.getElementById('resettt').addEventListener('click', function(){
+  document.getElementById('register-form').reset();
+
+ })
+</script>
+ {% endblock %}

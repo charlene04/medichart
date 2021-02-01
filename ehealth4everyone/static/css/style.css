@@ -1,0 +1,142 @@
+*{
+    font-size: small!important;
+    font-family: 'Poppins';
+}
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+
+}
+/* ===============INDEX======================= */
+.font-logo{
+    font-size: 17px!important;
+    font-weight: bold;
+}
+main.container{
+    min-height: 90vh;
+}
+main.index{
+    background-image: url(../img/char.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 90vh;
+}
+section.index-text-container{
+    display: flex;
+    height: 80vh;
+    align-items: center;
+}
+section.index-text-container div{
+    width: 50%;
+}
+section.index-text-container div button{
+    padding: 12px 40px
+}
+.bg-font{
+    font-size: 70px!important;
+}
+
+@media only screen and (max-width: 415px) and (max-height: 825px){
+    section.index-text-container div{
+        width: 90%;
+    }
+    section.index-text-container div button{
+        padding: 7px 40px
+    }
+    .bg-font{
+        font-size: 50px!important;
+    }
+}
+@media only screen and (max-width: 290px) and (max-height: 700px){
+    
+    .bg-font{
+        font-size: 40px!important;
+    }
+    .md-font{
+        font-size: 15px!important;
+    }
+}
+
+
+
+/* ================CUSTOM STYLING============================== */
+.md-font{
+    font-size: 20px!important;
+}
+.centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.color-black{
+    color: #343a40!important;
+}
+.bg-white{
+    background-color: white;
+    border: 0.3px solid grey;
+}
+.text-display{
+    display: contents;
+}
+ 
+.openbtw{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.w-40{
+    width: 180px;
+}
+
+/* ===========================FORMS======================= */
+
+.auth-left{
+    background-image: url(../img/stethoscope.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.auth-left div{
+    background-color: #000000ab;
+    height: 100%;
+    width: inherit;
+}
+.full-height{
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.fieldWrapper input:focus {
+    border: 1px solid #17a2b8;
+}
+.fieldWrapper{
+    margin: 0 15px 15px 15px
+}
+.fieldWrapper input {
+    padding: 8px 7px;
+    border-radius: 10px;
+    outline: none;
+    color: #666;
+    transition: all 0.4s ease;
+    border: 2px solid #0000002e;
+    width: 100%;
+    
+}
+.fieldWrapper label{
+    display: block;}
+
+
+
+
+/* ===============DASHBOARD======================== */
+.filter {
+    width: 80%;
+}
+
+#filter-cont {
+    width: 40%;
+}
