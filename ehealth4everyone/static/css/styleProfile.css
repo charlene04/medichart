@@ -271,7 +271,7 @@ select {
   #submit:hover {
     background-color: #cd5300; }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1000px) {
  
 
   .signup-content {
@@ -281,11 +281,23 @@ select {
     -o-flex-direction: column;
     -ms-flex-direction: column; }
 
-  .signup-img, .signup-form {
+  .signup-form {
     width: 100%; } }
+
+@media screen and (max-width: 992px) {
+ 
+  .signup-img {
+   display: none;
+  }
+  
+  }
+
+
 @media screen and (max-width: 768px) {
   .register-form {
     padding: 50px 40px 50px 40px; } }
+
+
 @media screen and (max-width: 575px) {
   .form-row {
     flex-direction: column;
@@ -318,5 +330,4 @@ select {
   #resettt {
     margin-right: 0px;
     margin-bottom: 10px; } }
-
 
