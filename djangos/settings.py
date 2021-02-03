@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'zi3hg!6p)4v9m!(eh++nq=(=lw&qwzxp+zrbeq63d42_7f&pki'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['medichart-app.herokuapp.com','localhost']
 LOGIN_REDIRECT_URL='/'
