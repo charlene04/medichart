@@ -12,7 +12,7 @@
        white-space:nowrap;
      }
      .vertical .grid{
-       transform:translateY(80%) translateX(40%) rotate(-90deg);
+       transform:translateY(60%) translateX(40%) rotate(-90deg);
        width: 300px;
       }
        
