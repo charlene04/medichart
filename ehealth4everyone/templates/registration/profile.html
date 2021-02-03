@@ -96,8 +96,8 @@ MediChart {% endblock %} {% block content %}
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="ailment">Ailment (if any) :</label>
-              <input type="text" name="disease" id="ailment" />
+              <label for="ailment">Ailment :</label>
+              <input type="text" name="disease" id="ailment" required />
             </div>
             <div class="form-group">
               <label for="last_visit">Last visit to Hospital :</label>
@@ -158,10 +158,8 @@ MediChart {% endblock %} {% block content %}
 </div>
 
 <script>
-
-document.getElementById('resettt').addEventListener('click', function(){
-  document.getElementById('register-form').reset();
-
- })
+  document.getElementById("resettt").addEventListener("click", function () {
+    document.getElementById("register-form").reset();
+  });
 </script>
 {% endblock %}
