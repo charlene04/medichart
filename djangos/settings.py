@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'zi3hg!6p)4v9m!(eh++nq=(=lw&qwzxp+zrbeq63d42_7f&pki'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['medichart-app.herokuapp.com','localhost']
 LOGIN_REDIRECT_URL='/'
@@ -84,11 +84,7 @@ WSGI_APPLICATION = 'djangos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd6lrblp03ufec4',
-        'USER': 'mvtlejzqilwtxo',
-        'PASSWORD':  'c62ad304f1934f521ffe3f00235945414fbada7bbc69b94d7bfe840de01a566c',
-        'HOST': 'ec2-100-24-165-208.compute-1.amazonaws.com',
-        'PORT': 5432,
+       
     }
 }
 
@@ -131,7 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 
 # STATICFILES_DIRS = [
