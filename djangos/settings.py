@@ -27,7 +27,7 @@ SECRET_KEY = 'zi3hg!6p)4v9m!(eh++nq=(=lw&qwzxp+zrbeq63d42_7f&pki'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['medichart-app.herokuapp.com','localhost']
 LOGIN_REDIRECT_URL='/'
 ACCOUNT_AUTHENTICATION_METHOD='email'
 
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'djangos.urls'
@@ -130,6 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles'),
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
