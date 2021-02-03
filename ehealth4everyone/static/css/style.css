@@ -90,6 +90,9 @@ section.index-text-container div button{
 .w-40{
     width: 180px;
 }
+.navbar-collapse.collapse.in {
+    display: block!important;
+  }
 
 /* ===========================FORMS======================= */
 
